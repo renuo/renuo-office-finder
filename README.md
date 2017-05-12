@@ -19,3 +19,7 @@ This takes a very long time and writes the results to `out.csv`
 ## Results
 
 First results are available for Renuoees [here](https://docs.google.com/spreadsheets/d/1wSQ7ASwvxV_guKk3Fyu2ewXOT68uN0jCngcmQpfP4C4/edit#gid=724542744). It's taking into account: St. Gallen, Sternen Oerlikon and Jona. Amazingly the best result right now is Wallisellen.
+
+## Improvements
+
+Yes, definitely possible. Please don't hesitate to come up with better algorithms so that we don't have to use brute force anymore.
