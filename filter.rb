@@ -28,7 +28,11 @@ target_ids = stations.map(&:first)
 home_ids = [
     '8503120', # Jona
     '8506302', # St. Gallen
-    '8591382'  # Sternen Oerlikon
+    '8506038', # Winterthur Wallrüti
+    '8591193', # Hirschwiesenstrasse
+    '8591127', # Felsenrainstrasse
+    '8502572', # Goldbrunnenplatz
+    '8503052', # Friesenberg
 ]
 
 max_duration = '00d01:10:00'
