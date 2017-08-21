@@ -15,27 +15,34 @@ def connection_duration(station_a, station_b)
   durations.min
 end
 
-center = Point.new(8.595545, 47.409209)
-radius = 0.5
-
-stations = CSV.read('bfkoordgeo.csv')[1..-1]
-stations.select! do |s|
-  station_location = Point.new(s[1].to_f, s[2].to_f)
-  distance(station_location, center) < radius
+def stations_in_range(center, radius)
+  stations = CSV.read('bfkoordgeo.csv')[1..-1]
+  stations.select do |s|
+    station_location = Point.new(s[1].to_f, s[2].to_f)
+    distance(station_location, center) < radius
+  end
 end
 
-target_ids = stations.map(&:first)
+wallisellen_coords = Point.new(8.595545, 47.409209)
+target_ids = stations_in_range(wallisellen_coords, 0.5).map(&:first)
 home_ids = [
-    '8503120', # Jona
-    '8506302', # St. Gallen
-    '8506038', # Winterthur Wallrüti
-    '8591193', # Hirschwiesenstrasse
-    '8591127', # Felsenrainstrasse
-    '8502572', # Goldbrunnenplatz
-    '8503052', # Friesenberg
+  '8591193', # Hirschwiesenstrasse
+  '8591390', # Talwiesenstrasse
+  '8503008', # Zürich Affoltern
+  '8506000', # Winterthur
+  '8503120', # Jona
+  '8591830', # Glattpark, Glattpark
+  '8503113', # Blumenau
+  '8506038', # Winterthur Wallrüti
+  '8579944', # Eglisau, Wiler (far away)
+  '8506000', # Winterthur (again)
+  '8503015', # Zürich Wipkingen
+  '8506302', # St. Gallen (far away)
+  '8502572', # Goldbrunnenplatz
+  '8591127', # Felsenrainstrasse
 ]
 
-max_duration = '00d01:10:00'
+max_duration = '00d01:20:00'
 
 CSV.open('out.csv', 'wb') do |csv|
   csv << ['target', *home_ids]
@@ -55,15 +62,13 @@ CSV.open('out.csv', 'wb') do |csv|
         csv << [target_id, *durations]
         putc '.'
       else
-        putc '-'
+        putc '~'
       end
 
     rescue
-      putc 'F'
+     putc 'F'
     end
   end
   puts
 end
-
-
 
