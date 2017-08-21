@@ -26,18 +26,18 @@ end
 wallisellen_coords = Point.new(8.595545, 47.409209)
 target_ids = stations_in_range(wallisellen_coords, 0.5).map(&:first)
 home_ids = [
+  '8506302', # St. Gallen (far away)
+  '8579944', # Eglisau, Wiler (far away)
+  '8503113', # Blumenau
+  '8503120', # Jona
   '8591193', # Hirschwiesenstrasse
   '8591390', # Talwiesenstrasse
   '8503008', # Zürich Affoltern
   '8506000', # Winterthur
-  '8503120', # Jona
   '8591830', # Glattpark, Glattpark
-  '8503113', # Blumenau
   '8506038', # Winterthur Wallrüti
-  '8579944', # Eglisau, Wiler (far away)
   '8506000', # Winterthur (again)
   '8503015', # Zürich Wipkingen
-  '8506302', # St. Gallen (far away)
   '8502572', # Goldbrunnenplatz
   '8591127', # Felsenrainstrasse
 ]
